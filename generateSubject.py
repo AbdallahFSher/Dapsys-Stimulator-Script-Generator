@@ -1,5 +1,5 @@
 # C-Fiber Study Script Generator
-# v1.0
+# v1.1
 # Author: Abdallah Sher
 # Date: 2024-07-08
 ## This script generates Dapsys scripts for digitimer stimulator based on user input.
@@ -154,9 +154,12 @@ while(newSubject):
         print("Subject folder created.")
         generateScripts(subject)
     else:
-        print("Subject already exists. Replace Scripts? (Y/N)")
+        print("Subject already exists. Replace/Append/Or leave scripts? (R/A/N)")
         replace = input()
-        if replace == "Y":
+        if replace == "R":
+            os.system("rm Subject_Scripts/" + subject + "/*")
+            generateScripts(subject)
+        elif replace == "A":
             generateScripts(subject)
         else:
             print("Exiting...")
